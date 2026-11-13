@@ -1,0 +1,96 @@
+{
+  "schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Polyglot",
+  "scopeName": "source.polyglot",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#attributes" },
+    { "include": "#keywords" },
+    { "include": "#types" },
+    { "include": "#numbers" },
+    { "include": "#strings" },
+    { "include": "#functions" },
+    { "include": "#macros" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        { "name": "comment.line.double-slash.polyglot", "match": "//.*$" },
+        { "name": "comment.block.polyglot", "begin": "/\\*", "end": "\\*/" }
+      ]
+    },
+    "attributes": {
+      "patterns": [
+        { "name": "meta.attribute.polyglot", "match": "#\\[\\w+(\\([^\\]]*\\))?\\]" }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.polyglot",
+          "match": "\\b(if|else|while|for|in|loop|break|continue|match|return|async|await)\\b"
+        },
+        {
+          "name": "keyword.declaration.polyglot",
+          "match": "\\b(fn|l|et|mut|struct|enum|impl|trait|use|mod|pub|const|static|type|where|as|unsafe|dyn)\\b"
+        },
+        {
+          "name": "constant.language.polyglot",
+          "match": "\\b(true|false|self|Self|None|Some|Ok|Err)\\b"
+        }
+      ]
+    },
+    "types": {
+      "patterns": [
+        {
+          "name": "support.type.primitive.polyglot",
+          "match": "\\b(i8|i16|i32|i64|i128|u8|u16|u32|u64|u128|isize|usize|f32|f64|bool|char|str|String)\\b"
+        },
+        {
+          "name": "support.type.polyglot",
+          "match": "\\b(Vec|HashMap|BTreeMap|HashSet|Option|Result)\\b"
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.polyglot",
+          "match": "\\b\\d[\\d_]*(?:\\.\\d[\\d_]*)?(?:[eE][+-]?\\d+)?(?:i8|i16|i32|i64|i128|u8|u16|u32|u64|u128|isize|usize|f32|f64)?\\b"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.polyglot",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            { "name": "constant.character.escape.polyglot", "match": "\\\\." }
+          ]
+        }
+      ]
+    },
+    "functions": {
+      "patterns": [
+        {
+          "name": "entity.name.function.polyglot",
+          "match": "\\b(fn)\\s+([a-zA-Z_][a-zA-Z0-9_]*)",
+          "captures": {
+            "1": { "name": "keyword.declaration.polyglot" },
+            "2": { "name": "entity.name.function.polyglot" }
+          }
+        }
+      ]
+    },
+    "macros": {
+      "patterns": [
+        {
+          "name": "support.function.macro.polyglot",
+          "match": "\\b(println|print|eprintln|eprint|format|write|vec|include|assert|assert_eq|assert_ne)\\s*!"
+        }
+      ]
+    }
+  }
+}

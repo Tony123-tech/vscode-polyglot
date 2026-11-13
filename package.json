@@ -1,0 +1,41 @@
+{
+  "name": "polyglot-lang",
+  "displayName": "Polyglot",
+  "description": "Syntax highlighting and completion for polyglot-lang (.poly files)",
+  "version": "0.1.0",
+  "publisher": "Tony123-tech",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": ["Programming Languages"],
+  "contributes": {
+    "languages": [
+      {
+        "id": "polyglot",
+        "aliases": ["Polyglot", "polyglot"],
+        "extensions": [".poly"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "polyglot",
+        "scopeName": "source.polyglot",
+        "path": "./syntaxes/polyglot.tmLanguage.json"
+      }
+    ]
+  },
+  "main": "./out/extension.js",
+  "activationEvents": ["onLanguage:polyglot"],
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.75.0",
+    "typescript": "^5.3.0"
+  }
+}
